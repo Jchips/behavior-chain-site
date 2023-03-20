@@ -48,7 +48,11 @@ h2 {
   padding: 10px 20px;
 }
 
-#reset-btn {
+.hide-button {
+  display: none;
+}
+
+.show-button {
   display: flex;
   margin: 10px auto;
   justify-content: center;

@@ -14,7 +14,8 @@
     const removeBoxBtn = document.querySelectorAll('.remove-box-btn');
     const form = document.getElementById('behavior-chain-form');
     const resetBtn = document.getElementById('reset-btn');
-    let renderedContainer = null;                                                                                                                           
+    let downloadBtn = document.getElementById('download-btn');
+    let renderedContainer = null;
 
     let chainBubbles = [];
 
@@ -27,7 +28,7 @@
       chainBubbles.push(this);
     }
 
-    ChainBubble.prototype.render = function(container) {
+    ChainBubble.prototype.render = function (container) {
       console.log(`render container status: ${container}`); // delete later
       let bubble = document.createElement('div');
       bubble.classList.add('rendered-bubble');
@@ -47,12 +48,13 @@
     addConsequencesBtn.addEventListener('click', toggleModal);
     modalCloseButton.addEventListener("click", toggleModal);
     addExtraBtn.addEventListener('click', handleAddExtra);
-    resetBtn.addEventListener('click', function() {
-      handleReset(form, chainBubbles, renderedContainer);
+    downloadBtn.addEventListener('click', handleDownload);
+    resetBtn.addEventListener('click', function () {
+      handleReset(form, chainBubbles, renderedContainer, downloadBtn);
     });
 
     form.addEventListener('submit', function (event) {
-      renderedContainer = handleSubmit(event, ChainBubble, chainBubbles);
+      renderedContainer = handleSubmit(event, ChainBubble, chainBubbles, downloadBtn);
       console.log(`rendered container value: ${renderedContainer}`); // delete later
     });
     for (let i = 0; i < removeBoxBtn.length; i++) {
@@ -79,10 +81,10 @@
 
     let shortTermBtn = document.getElementById('short-term-btn');
     let longTermBtn = document.getElementById('long-term-btn');
-    shortTermBtn.addEventListener('click', function() {
+    shortTermBtn.addEventListener('click', function () {
       handleShortTerm(modal);
     });
-    longTermBtn.addEventListener('click', function() {
+    longTermBtn.addEventListener('click', function () {
       handleLongTerm(modal);
     });
   }
@@ -91,7 +93,7 @@
     modal.classList.remove("show-modal");
     const shortConseqBox = document.getElementById('s-consequences-box');
     shortConseqBox.style.display = 'block';
-    
+
   }
 
   function handleLongTerm(modal) {
@@ -120,12 +122,13 @@
    * @param {array} chainBubbles - the array storing all of the chain objects.
    * @returns - returns a div element with the id 'container'
    */
-  function handleSubmit(event, ChainBubble, chainBubbles) {
+  function handleSubmit(event, ChainBubble, chainBubbles, downloadBtn) {
     event.preventDefault(); // prevents instant refresh
     let container = document.getElementById('container');
 
     if (container != null) {
       container.remove();
+      container = null;
     }
 
     let vulFactors = event.target.vulFactors.value;
@@ -181,14 +184,16 @@
       container.id = 'container';
       article.appendChild(container);
     }
-    
+
     renderChain(chainBubbles, container);
+    // downloadBtn.classList.remove('hide-button');
+    downloadBtn.classList.add('show-button');
 
     return container;
   }
 
   // Clears the form and the rendered content below
-  function handleReset(form, chainBubbles, renderedContainer) {
+  function handleReset(form, chainBubbles, renderedContainer, downloadBtn) {
     form.reset(); // clears form
 
     chainBubbles.length = 0;
@@ -196,17 +201,32 @@
     // removes the rendered content as long as there is nothing in it
     if (renderedContainer !== null) {
       renderedContainer.remove();
+      downloadBtn.classList.remove('show-button');
+      // downloadBtn.classList.add('hide-button');
+      
     }
   }
 
   // displays the complete behavior chain on the page 
   function renderChain(chainBubbles, container) {
-    for(let i = 0; i < chainBubbles.length; i++) {
+    for (let i = 0; i < chainBubbles.length; i++) {
       console.log(chainBubbles[i]); // delete later
       chainBubbles[i].render(container);
     }
 
     chainBubbles.length = 0;
+  }
+
+  // Code from Mohit K on https://stackoverflow.com/questions/10721884/render-html-to-an-image
+  function handleDownload() {
+    html2canvas(document.querySelector("#rendered-behavior-chain"))
+      .then(canvas => {
+        let a = document.createElement('a');
+        document.body.appendChild(a);
+        a.download = "behavior-chain.png";
+        a.href = canvas.toDataURL();
+        a.click();
+      });
   }
 
 })();
