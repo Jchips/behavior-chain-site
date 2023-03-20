@@ -1,4 +1,3 @@
-//import partials
 @import 'colors';
 
 header {
@@ -38,15 +37,15 @@ h2 {
   padding: 10px;
 }
 
-section {
-  // grid-area: section;
-  // justify-content: space-evenly;
-  // justify-items: center;
-  // align-content: space-evenly;
+.row {
+  --bs-gutter-x: 0;
+}
+
+.row > section {
   align-items: center;
   background-color: #eaf6fe;
   border-radius: 20px;
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 #reset-btn {
@@ -117,7 +116,7 @@ aside {
 
   & button {
     margin: 10px auto;
-    width: 60%;
+    width: 70%;
   }
 }
 

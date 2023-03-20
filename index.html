@@ -1,104 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/reset.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
   <script src="js/app.js"></script>
   <title>Create a Behavior Chain</title>
 </head>
+
 <body>
   <header>
     <img src="/assets/pin.png" alt="jrosecow logo">
     <h1>Create a Behavior Chain!</h1>
   </header>
-    <main class="row">
-      <aside class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
-        <button id="add-links-btn" type="button" class="btn btn-light">Add Links</button>
-        <button id="add-emotions-btn" type="button" class="btn btn-light">Add Emotions</button>
-        <button id="add-consequences-btn" type="button" class="btn btn-light">Add Consequences</button>
-        <button id="add-extra-btn" type="button" class="btn btn-light">Add Extra</button>
-      </aside>
-      <section class="col-xl-5 col-lg-5 col-md-7 col-sm-7 col-12">
-        <h2>Fill out to get your completed behavior chain</h2>
-        <form id="behavior-chain-form">
-          <fieldset id="vul-factors-box" class="box">
-            <legend>Vulnerability Factors</legend>
-            <label for="vul-factors"></label>
-            <!-- <input type="text" id="vul-factors" name="vulFactors" placeholder="Enter your vulnerability factors" required> -->
-            <textarea id="vul-factors" name="vulFactors" placeholder="Enter your vulnerability factors" required></textarea>
-          </fieldset>
-          <fieldset id="p-event-box" class="box">
-            <legend>Prompting Event</legend>
-            <label for="p-event"></label>
-            <textarea id="p-event" name="promptingEvent" placeholder="Enter your prompting event" required></textarea>
-          </fieldset>
-          <fieldset id="links-box" class="box">
-            <legend>Links</legend>
-            <button type="button" class="remove-box-btn">X</button>
-            <label for="links"></label>
-            <textarea id="links" name="links" placeholder="Enter your link(s)"></textarea>
-          </fieldset>
-          <fieldset id="emotions-box" class="box">
-            <legend>Emotions</legend>
-            <button type="button" class=" remove-box-btn">X</button>
-            <label for="emotions"></label>
-            <textarea id="emotions" name="emotions" placeholder="Enter your emotions (i.e. 'sad, depressed, anxious, guilty...)'"></textarea>
-          </fieldset>
-          <fieldset id="target-behavior-box" class="box">
-            <legend>Target Behavior</legend>
-            <label for="target-behavior"></label>
-            <textarea id="target-behavior" name="targetBehavior" placeholder="Enter your target behavior (i.e. self-harm)" required></textarea>
-            <!-- <input type="text" id="target-behavior" name="targetBehavior" placeholder="I.E. self-harm" required> -->
-          </fieldset>
-          <fieldset id="s-consequences-box" class="box">
-            <legend>Short-term Consequences</legend>
-            <button type="button" class="remove-box-btn">X</button>
-            <label for="target-behavior"></label>
-            <textarea id="s-consequences" name="sConsequences" style="height:70px" placeholder="Enter the short-term consequences (i.e. 'feeling embarrassed')"></textarea>
-          </fieldset>
-          <fieldset id="l-consequences-box" class="box">
-            <legend>Long-term Consequences</legend>
-            <button type="button" class="remove-box-btn">X</button>
-            <label for="target-behavior"></label>
-            <textarea id="l-consequences" name="lConsequences" style="height:70px" placeholder="Enter the long-term consequences (i.e. 'feeling hopeless')"></textarea>
-          </fieldset>
-          <fieldset id="extra-box" class="box">
-            <legend><input type="text" id="extra-title" name="extraTitle" placeholder="Give box a title"></legend>
-            <button type="button" class="remove-box-btn">X</button>
-            <label for="extra"></label>
-            <textarea id="extra" name="extra" placeholder="Enter any extra info you want to add"></textarea>
-          </fieldset>
-          <fieldset id="solutions-box" class="box">
-            <legend>Solutions</legend>
-            <label for="solutions"></label>
-            <textarea id="solutions" name="solutions" placeholder="Enter solution" required></textarea>
-          </fieldset>
-          <button type="submit" class="btn btn-success">Render</button>
-        </form>
-        <button id="reset-btn" type="reset" class="btn btn-danger">Reset</button>
-        <div class="modal">
-          <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Choose consequence box</h2>
-            <div class="modal-buttons">
-              <button id="short-term-btn" class="btn btn-outline-success">Short-term</button>
-              <button id="long-term-btn" class="btn btn-outline-success">Long-term</button>
-            </div>
+  <!-- Bootstrap grid -->
+  <main class="row">
+    <!-- Sidebar -->
+    <aside class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
+      <button id="add-links-btn" type="button" class="btn btn-light">Add Links</button>
+      <button id="add-emotions-btn" type="button" class="btn btn-light">Add Emotions</button>
+      <button id="add-consequences-btn" type="button" class="btn btn-light">Add Consequences</button>
+      <button id="add-extra-btn" type="button" class="btn btn-light">Add Extra</button>
+    </aside>
+
+    <section class="col-xl-5 col-lg-5 col-md-7 col-sm-7 col-12">
+      <h2>Fill out to get your completed behavior chain</h2>
+      <form id="behavior-chain-form">
+        <fieldset id="vul-factors-box" class="box">
+          <legend>Vulnerability Factors</legend>
+          <label for="vul-factors"></label>
+          <!-- <input type="text" id="vul-factors" name="vulFactors" placeholder="Enter your vulnerability factors" required> -->
+          <textarea id="vul-factors" name="vulFactors" placeholder="Enter your vulnerability factors"
+            required></textarea>
+        </fieldset>
+        <fieldset id="p-event-box" class="box">
+          <legend>Prompting Event</legend>
+          <label for="p-event"></label>
+          <textarea id="p-event" name="promptingEvent" placeholder="Enter your prompting event" required></textarea>
+        </fieldset>
+        <fieldset id="links-box" class="box">
+          <legend>Links</legend>
+          <button type="button" class="remove-box-btn">X</button>
+          <label for="links"></label>
+          <textarea id="links" name="links" placeholder="Enter your link(s)"></textarea>
+        </fieldset>
+        <fieldset id="emotions-box" class="box">
+          <legend>Emotions</legend>
+          <button type="button" class=" remove-box-btn">X</button>
+          <label for="emotions"></label>
+          <textarea id="emotions" name="emotions"
+            placeholder="Enter your emotions (i.e. 'sad, depressed, anxious, guilty...)'"></textarea>
+        </fieldset>
+        <fieldset id="target-behavior-box" class="box">
+          <legend>Target Behavior</legend>
+          <label for="target-behavior"></label>
+          <textarea id="target-behavior" name="targetBehavior" placeholder="Enter your target behavior (i.e. self-harm)"
+            required></textarea>
+          <!-- <input type="text" id="target-behavior" name="targetBehavior" placeholder="I.E. self-harm" required> -->
+        </fieldset>
+        <fieldset id="s-consequences-box" class="box">
+          <legend>Short-term Consequences</legend>
+          <button type="button" class="remove-box-btn">X</button>
+          <label for="target-behavior"></label>
+          <textarea id="s-consequences" name="sConsequences" style="height:70px"
+            placeholder="Enter the short-term consequences (i.e. 'feeling embarrassed')"></textarea>
+        </fieldset>
+        <fieldset id="l-consequences-box" class="box">
+          <legend>Long-term Consequences</legend>
+          <button type="button" class="remove-box-btn">X</button>
+          <label for="target-behavior"></label>
+          <textarea id="l-consequences" name="lConsequences" style="height:70px"
+            placeholder="Enter the long-term consequences (i.e. 'feeling hopeless')"></textarea>
+        </fieldset>
+        <fieldset id="extra-box" class="box">
+          <legend><input type="text" id="extra-title" name="extraTitle" placeholder="Give box a title"></legend>
+          <button type="button" class="remove-box-btn">X</button>
+          <label for="extra"></label>
+          <textarea id="extra" name="extra" placeholder="Enter any extra info you want to add"></textarea>
+        </fieldset>
+        <fieldset id="solutions-box" class="box">
+          <legend>Solutions</legend>
+          <label for="solutions"></label>
+          <textarea id="solutions" name="solutions" placeholder="Enter solution" required></textarea>
+        </fieldset>
+        <button type="submit" class="btn btn-success">Render</button>
+      </form>
+
+      <button id="reset-btn" type="reset" class="btn btn-danger">Reset</button>
+
+      <!-- Consequences modal -->
+      <div class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>Choose consequence box</h2>
+          <div class="modal-buttons">
+            <button id="short-term-btn" class="btn btn-outline-success">Short-term</button>
+            <button id="long-term-btn" class="btn btn-outline-success">Long-term</button>
           </div>
         </div>
-      </section>
-      <article id="rendered-behavior-chain" class="col-xl-4 col-lg-3 col-md-12 col-sm-12 col-12">
-        <h2>Rendered Behavior Chain</h2>
-      </article>
-    </main>
+      </div>
+    </section>
+
+    <!-- Rendered content -->
+    <article id="rendered-behavior-chain" class="col-xl-4 col-lg-3 col-md-12 col-sm-12 col-12">
+      <h2>Rendered Behavior Chain</h2>
+    </article>
+  </main>
   <footer>
     &copy; Jrosecow
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

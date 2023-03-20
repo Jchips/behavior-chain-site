@@ -28,11 +28,15 @@ h2 {
   padding: 10px;
 }
 
-section {
+.row {
+  --bs-gutter-x: 0;
+}
+
+.row > section {
   align-items: center;
   background-color: #eaf6fe;
   border-radius: 20px;
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 #reset-btn {
@@ -97,7 +101,7 @@ aside {
 }
 aside button {
   margin: 10px auto;
-  width: 60%;
+  width: 70%;
 }
 
 article {
