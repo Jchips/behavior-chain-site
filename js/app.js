@@ -9,6 +9,7 @@
     const addLinksBtn = document.getElementById('add-links-btn');
     const addEmotionsBtn = document.getElementById('add-emotions-btn');
     const addConsequencesBtn = document.getElementById('add-consequences-btn');
+    let modalCloseButton = document.querySelector(".close-button");
     const addExtraBtn = document.getElementById('add-extra-btn');
     const removeBoxBtn = document.querySelectorAll('.remove-box-btn');
     const form = document.getElementById('behavior-chain-form');
@@ -43,7 +44,8 @@
     // EVENT LISTENERS
     addLinksBtn.addEventListener('click', handleAddLinks);
     addEmotionsBtn.addEventListener('click', handleAddEmotions);
-    addConsequencesBtn.addEventListener('click', handleAddConsequences);
+    addConsequencesBtn.addEventListener('click', toggleModal);
+    modalCloseButton.addEventListener("click", toggleModal);
     addExtraBtn.addEventListener('click', handleAddExtra);
     resetBtn.addEventListener('click', function() {
       handleReset(form, chainBubbles, renderedContainer);
@@ -70,8 +72,32 @@
     emotionsBox.style.display = 'block';
   }
 
-  function handleAddConsequences() {
-    // Add modal
+  // code from https://www.w3docs.com/snippets/javascript/how-to-create-a-modal-dialog-box-with-css-and-javascript.html
+  function toggleModal() {
+    let modal = document.querySelector(".modal");
+    modal.classList.toggle("show-modal");
+
+    let shortTermBtn = document.getElementById('short-term-btn');
+    let longTermBtn = document.getElementById('long-term-btn');
+    shortTermBtn.addEventListener('click', function() {
+      handleShortTerm(modal);
+    });
+    longTermBtn.addEventListener('click', function() {
+      handleLongTerm(modal);
+    });
+  }
+
+  function handleShortTerm(modal) {
+    modal.classList.remove("show-modal");
+    const shortConseqBox = document.getElementById('s-consequences-box');
+    shortConseqBox.style.display = 'block';
+    
+  }
+
+  function handleLongTerm(modal) {
+    modal.classList.remove("show-modal");
+    const longConseqBox = document.getElementById('l-consequences-box');
+    longConseqBox.style.display = 'block';
   }
 
   // displays the extras box when user clicks the 'add extra' button

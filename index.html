@@ -47,31 +47,31 @@
             <legend>Emotions</legend>
             <button type="button" class=" remove-box-btn">X</button>
             <label for="emotions"></label>
-            <textarea id="emotions" name="emotions" placeholder="I.E. 'sad, depressed, anxious, guilty...'"></textarea>
+            <textarea id="emotions" name="emotions" placeholder="Enter your emotions (i.e. 'sad, depressed, anxious, guilty...)'"></textarea>
           </fieldset>
           <fieldset id="target-behavior-box" class="box">
             <legend>Target Behavior</legend>
             <label for="target-behavior"></label>
-            <textarea id="target-behavior" name="targetBehavior" placeholder="I.E. self-harm" required></textarea>
+            <textarea id="target-behavior" name="targetBehavior" placeholder="Enter your target behavior (i.e. self-harm)" required></textarea>
             <!-- <input type="text" id="target-behavior" name="targetBehavior" placeholder="I.E. self-harm" required> -->
-          </fieldset>
-          <fieldset id="l-consequences-box" class="box">
-            <legend>Long-term Consequences</legend>
-            <button type="button" class="remove-box-btn">X</button>
-            <label for="target-behavior"></label>
-            <textarea id="l-consequences" name="lConsequences" placeholder="I.E. 'feeling hopeless'"></textarea>
           </fieldset>
           <fieldset id="s-consequences-box" class="box">
             <legend>Short-term Consequences</legend>
             <button type="button" class="remove-box-btn">X</button>
             <label for="target-behavior"></label>
-            <textarea id="s-consequences" name="sConsequences" placeholder="I.E. 'feeling embarrassed'"></textarea>
+            <textarea id="s-consequences" name="sConsequences" style="height:70px" placeholder="Enter the short-term consequences (i.e. 'feeling embarrassed')"></textarea>
+          </fieldset>
+          <fieldset id="l-consequences-box" class="box">
+            <legend>Long-term Consequences</legend>
+            <button type="button" class="remove-box-btn">X</button>
+            <label for="target-behavior"></label>
+            <textarea id="l-consequences" name="lConsequences" style="height:70px" placeholder="Enter the long-term consequences (i.e. 'feeling hopeless')"></textarea>
           </fieldset>
           <fieldset id="extra-box" class="box">
             <legend><input type="text" id="extra-title" name="extraTitle" placeholder="Give box a title"></legend>
             <button type="button" class="remove-box-btn">X</button>
             <label for="extra"></label>
-            <textarea id="extra" name="extra" placeholder="Enter any entra info you want to add"></textarea>
+            <textarea id="extra" name="extra" placeholder="Enter any extra info you want to add"></textarea>
           </fieldset>
           <fieldset id="solutions-box" class="box">
             <legend>Solutions</legend>
@@ -81,6 +81,16 @@
           <button type="submit" class="btn btn-success">Render</button>
         </form>
         <button id="reset-btn" type="reset" class="btn btn-danger">Reset</button>
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Choose consequence box</h2>
+            <div class="modal-buttons">
+              <button id="short-term-btn" class="btn btn-outline-success">Short-term</button>
+              <button id="long-term-btn" class="btn btn-outline-success">Long-term</button>
+            </div>
+          </div>
+        </div>
       </section>
       <article id="rendered-behavior-chain" class="col-xl-4 col-lg-3 col-md-12 col-sm-12 col-12">
         <h2>Rendered Behavior Chain</h2>
